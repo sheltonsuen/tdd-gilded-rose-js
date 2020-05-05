@@ -28,10 +28,23 @@ function recalculateQuality(good) {
 
   switch (good.name) {
     case 'Backstage pass': {
-      return isExpired ? 0 : good.quality + 1;
+      return recalculateBackstagePassQuality(good, expirationDate
+        .diff(dayjs(), 'day'));
     }
     default: {
       return good.quality - (isExpired ? 2 : 0);
     }
+  }
+}
+
+function recalculateBackstagePassQuality(good, expirationDiff) {
+  if (expirationDiff > 10) {
+    return good.quality + 1;
+  } else if (expirationDiff > 5) {
+    return good.quality + 2;
+  } else if (expirationDiff > 0) {
+    return good.quality + 3;
+  } else {
+    return 0;
   }
 }

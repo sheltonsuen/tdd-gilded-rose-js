@@ -19,7 +19,7 @@ const MOCK_GOODS = [
   {
     name: 'Backstage pass',
     productionDate: '2019-01-01',
-    sellIn: 10,
+    sellIn: 15,
     quality: 1,
   },
 ];
@@ -57,14 +57,31 @@ test('should quality always greater or equal to 0', () => {
 });
 
 test('should increase quality for Backstage pass when close to show day', () => {
-  expect(updateGildedRose([...MOCK_GOODS])[2].quality)
+  MockDate.set(new Date('2019-01-3'));
+
+  expect(updateGildedRose(MOCK_GOODS)[2].quality)
     .toBe(2);
+});
+
+
+test('should increase quality for Backstage pass by two per day when 10 days close to show day', () => {
+  MockDate.set(new Date('2019-01-8'));
+
+  expect(updateGildedRose(MOCK_GOODS)[2].quality)
+    .toBe(3);
+});
+
+test('should increase quality for Backstage pass by 3 per day when 5 days close to show day', () => {
+  MockDate.set(new Date('2019-01-11'));
+
+  expect(updateGildedRose(MOCK_GOODS)[2].quality)
+    .toBe(4);
 });
 
 
 test('should default quality to 0 for Backstage pass when over show day', () => {
   MockDate.set(new Date('2019-02-11'));
 
-  expect(updateGildedRose([...MOCK_GOODS])[2].quality)
+  expect(updateGildedRose(MOCK_GOODS)[2].quality)
     .toBe(0);
 });
