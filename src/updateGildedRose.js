@@ -6,13 +6,13 @@ export default function (goods) {
       .add(v.sellIn, 'day');
 
     const qualityDowngrade = dayjs()
-      .diff(expirationDate, 'day') * 2;
+      .isAfter(expirationDate, 'day') ? 2 : 0;
 
-    const updatedQuality = v.quality - qualityDowngrade
+    const updatedQuality = v.quality - qualityDowngrade;
 
     return {
       ...v,
-      quality: updatedQuality < 0 ? 0: updatedQuality
+      quality: updatedQuality < 0 ? 0 : updatedQuality
     };
   });
 }
