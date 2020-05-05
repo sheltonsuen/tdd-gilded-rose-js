@@ -16,6 +16,12 @@ const MOCK_GOODS = [
     sellIn: 60,
     quality: 0,
   },
+  {
+    name: 'Backstage pass',
+    productionDate: '2019-01-01',
+    sellIn: 10,
+    quality: 1,
+  },
 ];
 
 beforeEach(() => {
@@ -28,13 +34,14 @@ afterEach(() => {
 
 test('should return same number of goods', () => {
   expect(updateGildedRose(MOCK_GOODS))
-    .toHaveLength(2);
+    .toHaveLength(3);
 });
 
 test('should double decrease quality when over production date', () => {
   const result1 = updateGildedRose(MOCK_GOODS);
 
-  expect(result1[0].quality).toBe(8);
+  expect(result1[0].quality)
+    .toBe(8);
 
   MockDate.set(new Date('2019-01-11'));
 
@@ -46,5 +53,18 @@ test('should quality always greater or equal to 0', () => {
   MockDate.set(new Date('2020-02-23'));
 
   expect(updateGildedRose(MOCK_GOODS)[1].quality)
+    .toBe(0);
+});
+
+test('should increase quality for Backstage pass when close to show day', () => {
+  expect(updateGildedRose([...MOCK_GOODS])[2].quality)
+    .toBe(2);
+});
+
+
+test('should default quality to 0 for Backstage pass when over show day', () => {
+  MockDate.set(new Date('2019-02-11'));
+
+  expect(updateGildedRose([...MOCK_GOODS])[2].quality)
     .toBe(0);
 });
