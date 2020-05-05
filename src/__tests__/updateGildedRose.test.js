@@ -107,3 +107,14 @@ describe('Sulfuras', () => {
       .toBe(10);
   });
 });
+
+
+test('should increase quality for Aged Brie all the time', () => {
+  MockDate.set(new Date('2019-01-30'));
+
+  expect(updateGildedRose([{
+    ...MOCK_GOODS[0],
+    name: 'Aged Brie'
+  }])[0].quality)
+    .toBe(11);
+});

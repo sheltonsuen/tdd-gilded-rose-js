@@ -38,6 +38,9 @@ function recalculateQuality(good) {
     case 'Sulfuras': {
       return good.quality;
     }
+    case 'Aged Brie': {
+      return good.quality + 1;
+    }
     default: {
       return good.quality - (isExpired ? 2 : 0);
     }
