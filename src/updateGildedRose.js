@@ -16,6 +16,10 @@ function getQuality(good) {
     return 0;
   }
 
+  if (updatedQuality > 50) {
+    return 50;
+  }
+
   return updatedQuality;
 }
 

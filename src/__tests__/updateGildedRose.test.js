@@ -56,6 +56,16 @@ test('should quality always greater or equal to 0', () => {
     .toBe(0);
 });
 
+test('should quality always less than or equal to 50', () => {
+  MockDate.set(new Date('2019-01-04'));
+
+  expect(updateGildedRose([{
+    ...MOCK_GOODS[2],
+    quality: 50
+  }])[0].quality)
+    .toBe(50);
+});
+
 test('should increase quality for Backstage pass when close to show day', () => {
   MockDate.set(new Date('2019-01-3'));
 
