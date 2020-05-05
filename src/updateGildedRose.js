@@ -35,6 +35,9 @@ function recalculateQuality(good) {
       return recalculateBackstagePassQuality(good, expirationDate
         .diff(dayjs(), 'day'));
     }
+    case 'Sulfuras': {
+      return good.quality;
+    }
     default: {
       return good.quality - (isExpired ? 2 : 0);
     }

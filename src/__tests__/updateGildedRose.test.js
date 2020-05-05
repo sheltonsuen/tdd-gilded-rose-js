@@ -95,3 +95,15 @@ test('should default quality to 0 for Backstage pass when over show day', () => 
   expect(updateGildedRose(MOCK_GOODS)[2].quality)
     .toBe(0);
 });
+
+describe('Sulfuras', () => {
+  test('should not decrease quality ', () => {
+    const result1 = updateGildedRose([{
+      ...MOCK_GOODS[0],
+      name: 'Sulfuras'
+    }]);
+
+    expect(result1[0].quality)
+      .toBe(10);
+  });
+});
