@@ -40,3 +40,10 @@ test('should double decrease quality when over production date', () => {
   expect(updateGildedRose(MOCK_GOODS)[0].quality)
     .toBe(6);
 });
+
+test('should quality always greater or equal to 0', () => {
+  MockDate.set(new Date('2019-02-23'));
+
+  expect(updateGildedRose(MOCK_GOODS)[0].quality)
+    .toBe(0);
+});

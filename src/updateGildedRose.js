@@ -7,9 +7,12 @@ export default function (goods) {
 
     const qualityDowngrade = dayjs()
       .diff(expirationDate, 'day') * 2;
+
+    const updatedQuality = v.quality - qualityDowngrade
+
     return {
       ...v,
-      quality: v.quality - qualityDowngrade
+      quality: updatedQuality < 0 ? 0: updatedQuality
     };
   });
 }
