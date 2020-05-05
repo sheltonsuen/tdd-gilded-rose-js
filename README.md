@@ -22,3 +22,12 @@
 	- 在演出前10天，价值每天上升2点
 	- 演出前5天，价值每天上升3点
 	- 一旦过了演出日，价值就马上变成0
+	
+	
+# Implementation [Gilded Rose]
+
+## Tasking
+- add method to be able to return updated goods
+- process double decrease when over `SellIn`
+- process 0 & 50 boundary
+- process some special cases
