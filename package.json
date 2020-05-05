@@ -24,6 +24,10 @@
     "eslint-plugin-jest": "^22.21.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "mockdate": "^2.0.5"
+  },
+  "dependencies": {
+    "dayjs": "^1.8.26"
   }
 }
